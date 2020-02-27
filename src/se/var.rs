@@ -31,10 +31,11 @@ where
     type Ok = ();
     type Error = DeError;
 
-    fn serialize_key<T: ?Sized + Serialize>(&mut self, _: &T) -> Result<(), DeError> {
-        Err(DeError::Unsupported(
-            "impossible to serialize the key on its own, please use serialize_entry()",
-        ))
+    fn serialize_key<T: ?Sized + Serialize>(&mut self, key: &T) -> Result<(), DeError> {
+        Ok(())
+        /* Err(DeError::Unsupported( */
+            // "impossible to serialize the key on its own, please use serialize_entry()",
+        /* )) */
     }
 
     fn serialize_value<T: ?Sized + Serialize>(&mut self, value: &T) -> Result<(), DeError> {
